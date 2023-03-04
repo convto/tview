@@ -45,12 +45,12 @@ func (r *RadioButtons) Draw(screen tcell.Screen) {
 func (r *RadioButtons) InputHandler() func(event *tcell.EventKey, setFocus func(p tview.Primitive)) {
 	return r.WrapInputHandler(func(event *tcell.EventKey, setFocus func(p tview.Primitive)) {
 		switch event.Key() {
-		case tcell.KeyUp:
+		case tcell.KeyUp, tcell.KeyCtrlP:
 			r.currentOption--
 			if r.currentOption < 0 {
 				r.currentOption = 0
 			}
-		case tcell.KeyDown:
+		case tcell.KeyDown, tcell.KeyCtrlN:
 			r.currentOption++
 			if r.currentOption >= len(r.options) {
 				r.currentOption = len(r.options) - 1

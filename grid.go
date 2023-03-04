@@ -301,9 +301,9 @@ func (g *Grid) InputHandler() func(event *tcell.EventKey, setFocus func(p Primit
 			g.rowOffset, g.columnOffset = 0, 0
 		case tcell.KeyEnd:
 			g.rowOffset = math.MaxInt32
-		case tcell.KeyUp:
+		case tcell.KeyUp, tcell.KeyCtrlP:
 			g.rowOffset--
-		case tcell.KeyDown:
+		case tcell.KeyDown, tcell.KeyCtrlN:
 			g.rowOffset++
 		case tcell.KeyLeft:
 			g.columnOffset--

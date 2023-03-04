@@ -412,8 +412,8 @@ func (t *tableDefaultContent) GetColumnCount() int {
 //
 //   - h, left arrow: Move left by one column.
 //   - l, right arrow: Move right by one column.
-//   - j, down arrow: Move down by one row.
-//   - k, up arrow: Move up by one row.
+//   - j, down arrow, Ctrl-N: Move down by one row.
+//   - k, up arrow, Ctrl-P: Move up by one row.
 //   - g, home: Move to the top.
 //   - G, end: Move to the bottom.
 //   - Ctrl-F, page down: Move down by one page.
@@ -1587,9 +1587,9 @@ func (t *Table) InputHandler() func(event *tcell.EventKey, setFocus func(p Primi
 			home()
 		case tcell.KeyEnd:
 			end()
-		case tcell.KeyUp:
+		case tcell.KeyUp, tcell.KeyCtrlP:
 			up()
-		case tcell.KeyDown:
+		case tcell.KeyDown, tcell.KeyCtrlN:
 			down()
 		case tcell.KeyLeft:
 			left()

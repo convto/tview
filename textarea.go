@@ -104,8 +104,8 @@ type textAreaUndoItem struct {
 //
 //   - Left arrow: Move left.
 //   - Right arrow: Move right.
-//   - Down arrow: Move down.
-//   - Up arrow: Move up.
+//   - Down arrow, Ctrl-N: Move down.
+//   - Up arrow, Ctrl-P: Move up.
 //   - Ctrl-A, Home: Move to the beginning of the current line.
 //   - Ctrl-E, End: Move to the end of the current line.
 //   - Ctrl-F, page down: Move down by one page.
@@ -1904,7 +1904,7 @@ func (t *TextArea) InputHandler() func(event *tcell.EventKey, setFocus func(p Pr
 					}
 				}
 			}
-		case tcell.KeyDown: // Move one row down.
+		case tcell.KeyDown, tcell.KeyCtrlN: // Move one row down.
 			if event.Modifiers()&tcell.ModAlt == 0 {
 				// Regular movement.
 				column := t.cursor.column
@@ -1926,7 +1926,7 @@ func (t *TextArea) InputHandler() func(event *tcell.EventKey, setFocus func(p Pr
 					}
 				}
 			}
-		case tcell.KeyUp: // Move one row up.
+		case tcell.KeyUp, tcell.KeyCtrlP: // Move one row up.
 			if event.Modifiers()&tcell.ModAlt == 0 {
 				// Regular movement.
 				column := t.cursor.column

@@ -90,8 +90,8 @@ func (w TextViewWriter) HasFocus() bool {
 //
 //   - h, left arrow: Move left.
 //   - l, right arrow: Move right.
-//   - j, down arrow: Move down.
-//   - k, up arrow: Move up.
+//   - j, down arrow, Ctrl-N: Move down.
+//   - k, up arrow, Ctrl-P: Move up.
 //   - g, home: Move to the top.
 //   - G, end: Move to the bottom.
 //   - Ctrl-F, page down: Move down by one page.
@@ -1438,10 +1438,10 @@ func (t *TextView) InputHandler() func(event *tcell.EventKey, setFocus func(p Pr
 		case tcell.KeyEnd:
 			t.trackEnd = true
 			t.columnOffset = 0
-		case tcell.KeyUp:
+		case tcell.KeyUp, tcell.KeyCtrlP:
 			t.trackEnd = false
 			t.lineOffset--
-		case tcell.KeyDown:
+		case tcell.KeyDown, tcell.KeyCtrlN:
 			t.lineOffset++
 		case tcell.KeyLeft:
 			t.columnOffset--

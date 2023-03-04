@@ -590,9 +590,9 @@ func (l *List) InputHandler() func(event *tcell.EventKey, setFocus func(p Primit
 		previousItem := l.currentItem
 
 		switch key := event.Key(); key {
-		case tcell.KeyTab, tcell.KeyDown:
+		case tcell.KeyTab, tcell.KeyDown, tcell.KeyCtrlN:
 			l.currentItem++
-		case tcell.KeyBacktab, tcell.KeyUp:
+		case tcell.KeyBacktab, tcell.KeyUp, tcell.KeyCtrlP:
 			l.currentItem--
 		case tcell.KeyRight:
 			if l.overflowing {

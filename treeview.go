@@ -243,8 +243,8 @@ func (n *TreeNode) GetLevel() int {
 // Nodes can be selected by calling SetCurrentNode(). The user can navigate the
 // selection or the tree by using the following keys:
 //
-//   - j, down arrow, right arrow: Move (the selection) down by one node.
-//   - k, up arrow, left arrow: Move (the selection) up by one node.
+//   - j, down arrow, right arrow, Ctrl-N: Move (the selection) down by one node.
+//   - k, up arrow, left arrow, Ctrl-P: Move (the selection) up by one node.
 //   - g, home: Move (the selection) to the top.
 //   - G, end: Move (the selection) to the bottom.
 //   - J: Move (the selection) up one level (if that node is selectable).
@@ -745,10 +745,10 @@ func (t *TreeView) InputHandler() func(event *tcell.EventKey, setFocus func(p Pr
 			if t.done != nil {
 				t.done(key)
 			}
-		case tcell.KeyDown, tcell.KeyRight:
+		case tcell.KeyDown, tcell.KeyRight, tcell.KeyCtrlN:
 			t.movement = treeMove
 			t.step = 1
-		case tcell.KeyUp, tcell.KeyLeft:
+		case tcell.KeyUp, tcell.KeyLeft, tcell.KeyCtrlP:
 			t.movement = treeMove
 			t.step = -1
 		case tcell.KeyHome:

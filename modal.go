@@ -109,9 +109,9 @@ func (m *Modal) AddButtons(labels []string) *Modal {
 			button := m.form.GetButton(m.form.GetButtonCount() - 1)
 			button.SetInputCapture(func(event *tcell.EventKey) *tcell.EventKey {
 				switch event.Key() {
-				case tcell.KeyDown, tcell.KeyRight:
+				case tcell.KeyDown, tcell.KeyRight, tcell.KeyCtrlN:
 					return tcell.NewEventKey(tcell.KeyTab, 0, tcell.ModNone)
-				case tcell.KeyUp, tcell.KeyLeft:
+				case tcell.KeyUp, tcell.KeyLeft, tcell.KeyCtrlP:
 					return tcell.NewEventKey(tcell.KeyBacktab, 0, tcell.ModNone)
 				}
 				return event
